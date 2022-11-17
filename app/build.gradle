@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "com.example.shoppingAccount"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    repositories {
+
+        maven { url "https://jitpack.io" }
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    def nav_version = "2.1.0-beta02"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //navigation
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+
+    //Chart Graph
+
+    //noinspection GradleDeprecatedConfiguration
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //noinspection GradleCompatible,GradleDeprecatedConfiguration
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    //noinspection GradleDeprecatedConfiguration
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //chart lib
+    //noinspection GradleDeprecatedConfiguration
+    compile 'com.github.PhilJay:MPAndroidChart-Realm:v2.0.2@aar'
+    //noinspection GradleDeprecatedConfiguration
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+
+    //stetho
+    //noinspection GradleDeprecatedConfiguration
+    compile 'com.facebook.stetho:stetho:1.4.1'
+    //noinspection GradleDeprecatedConfiguration
+    compile 'com.uphyca:stetho_realm:2.0.0'
+
+    //noinspection GradleDeprecatedConfiguration
+    testCompile 'junit:junit:4.12'
+}

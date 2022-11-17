@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.SecondFragment"
+    android:background="?android:attr/windowBackground">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+                <ImageView
+                    android:id="@+id/gole_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/goal_account"
+                    android:layout_centerVertical="true" />
+                <TextView
+                    android:id="@+id/user_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/gole_icon"
+                    android:text="목표 한도"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:textSize="20dp"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/money_goal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="27dp"
+                    android:layout_centerVertical="true"
+                    android:text="0"
+                    android:layout_toRightOf="@id/user_id"
+                    android:gravity="center_horizontal" />
+
+                <TextView
+                    android:id="@+id/money_own"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_horizontal"
+                    android:text="원"
+                    android:layout_toRightOf="@id/money_goal"/>
+
+                <Button
+                    android:id="@+id/button_set_budget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/gradient1"
+                    android:text="예산설정"
+                    android:textColor="#FFFFFF" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+                <ImageView
+                    android:id="@+id/calender_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/calendar"
+                    android:layout_centerVertical="true" />
+                <TextView
+                    android:id="@+id/label_month_sum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/calender_icon"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="월별 사용액"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/sum_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_toRightOf="@id/label_month_sum"
+                    android:text="0"
+                    android:layout_centerVertical="true" />
+                <TextView
+                    android:id="@+id/sum_own"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_toRightOf="@id/sum_month"
+                    android:text="원"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/text_monthly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/button_monthly_month"
+                    android:layout_centerVertical="true"
+                    android:textColor="#000000"
+                    android:text="01"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:id="@+id/button_monthly_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/linear_account"
+                    android:textColor="#000000"
+                    android:text="월"
+                    android:textSize="20dp"/>
+                <LinearLayout
+                    android:id="@+id/linear_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:layout_marginRight="25dp"
+                    android:layout_alignParentRight="true">
+                    <Button
+                        android:id="@+id/month_add_btn"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:text="▲"
+                        android:textSize="8dp"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:background="#000000"
+                        android:layout_alignParentRight="true"/>
+                    <Button
+                        android:id="@+id/month_minus_btn"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="5dp"
+                        android:text="▼"
+                        android:textSize="8dp"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:background="#000000"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/relative_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+                <ImageView
+                    android:id="@+id/emotion"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/good"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5dp">
+                        <TextView
+                            android:id="@+id/wow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/emotion"
+                            android:layout_marginLeft="20dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="5dp"
+                            android:textSize="15dp"
+                            android:gravity="center"
+                            android:text="상태:"/>
+                        <TextView
+                            android:id="@+id/money_emotion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/wow"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_centerVertical="true"
+                            android:textSize="15dp"
+                            android:gravity="center"
+                            android:text="GOOD"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/emotion_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/emotion"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"
+                        android:textSize="17dp"
+                        android:gravity="center"
+                        android:text="효율적인 소비생활을 유지하고\n계시는군요!"/>
+                </LinearLayout>
+            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/bbb"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/relative_account"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/money_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:layout_marginLeft="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/money"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="소비 현황"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/money_icon"
+                    android:layout_marginLeft="10dp"/>
+            </RelativeLayout>
+            <ListView
+                android:id="@+id/account_list"
+                android:layout_below="@id/bbb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

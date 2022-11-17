@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/nav_first"
+        android:title="메인화면"
+        android:icon="@drawable/main_home"
+        android:checked="true"
+        app:showAsAction="always"/>
+
+
+    <item android:id="@+id/nav_second"
+        android:title="가계부"
+        android:icon="@drawable/account_book"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/nav_third"
+        android:title="마이페이지"
+        android:icon="@drawable/add"
+        app:showAsAction="always"/>
+
+</menu>
