@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.shoppingAccount.R;
+import com.example.shoppingAccount.favorite.FavoriteMain;
 import com.example.shoppingAccount.mypageAdapter;
 import com.example.shoppingAccount.notice_page;
 import com.example.shoppingAccount.orderList.order_main;
@@ -48,6 +49,8 @@ public class ThirdFragment extends Fragment {
                 }
                 else if(position == 1){
                     getFragmentManager().beginTransaction().replace(R.id.host_fragment, new order_main()).commit();
+                }else if(position == 2){
+                    getFragmentManager().beginTransaction().replace(R.id.host_fragment, new FavoriteMain()).commit();
                 }
             }
         });

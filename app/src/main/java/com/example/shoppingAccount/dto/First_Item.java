@@ -1,10 +1,20 @@
-package com.example.shoppingAccount;
+package com.example.shoppingAccount.dto;
 
 public class First_Item {
+    int pid;
     Integer image_list;
     String name_list;
     String account_list;
     String search_list;
+    int favorite;
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
 
     public Integer getImage_list() {
         return image_list;
@@ -38,6 +48,15 @@ public class First_Item {
         this.search_list = search_list;
     }
 
+    public int getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(int favorite) {
+        this.favorite = favorite;
+    }
+
+    public First_Item(){}
     public First_Item(Integer image_list, String name_list, String account_list, String search_list) {
         this.image_list = image_list;
         this.name_list = name_list;

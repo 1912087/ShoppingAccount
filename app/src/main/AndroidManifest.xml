@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@drawable/app_logo"
         android:label="쇼핑 가계"
-        android:roundIcon="@drawable/app_logo"
+        android:roundIcon="@drawable/shopping_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".intro_Activity">
@@ -17,11 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".goods_click" android:label=".goods_click"/>
         <activity android:name=".Popup.PopupActivity" android:label=".Popup.PopupActivity" android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar" />

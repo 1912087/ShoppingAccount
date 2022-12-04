@@ -5,8 +5,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 public class mypageAdapter extends BaseAdapter {
-    private Integer[] icon1 = {R.drawable.notice, R.drawable.order_request};
-    String[] mypage_title = {"공지사항", "주문목록"};
+    private Integer[] icon1 = {R.drawable.notice, R.drawable.order_request, R.drawable.page3_heart};
+    String[] mypage_title = {"공지사항", "주문목록", "찜한 상품"};
     @Override
     public int getCount() {
         return mypage_title.length ;

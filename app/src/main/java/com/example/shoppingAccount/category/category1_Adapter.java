@@ -1,9 +1,6 @@
 package com.example.shoppingAccount.category;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shoppingAccount.First_Adapter;
-import com.example.shoppingAccount.First_Item;
 import com.example.shoppingAccount.R;
-import com.example.shoppingAccount.goods_click;
 
-import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -42,6 +35,7 @@ public class category1_Adapter extends RecyclerView.Adapter<category1_Adapter.Cu
         protected TextView name_list;
         protected TextView account_list;
         protected TextView search_list;
+        protected ImageView ivFavorite;
 
         public CustomViewHolder(View view) {
             super(view);
@@ -50,6 +44,7 @@ public class category1_Adapter extends RecyclerView.Adapter<category1_Adapter.Cu
             this.name_list = (TextView) view.findViewById(R.id.category1_name);
             this.account_list = (TextView) view.findViewById(R.id.category1_account);
             this.search_list = (TextView) view.findViewById(R.id.category1_search);
+            this.ivFavorite = (ImageView) view.findViewById(R.id.category1_ivFavorite);
 
         }
     }
@@ -69,16 +64,17 @@ public class category1_Adapter extends RecyclerView.Adapter<category1_Adapter.Cu
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final CustomViewHolder viewholder, final int position) {
+    public void onBindViewHolder(@NonNull final CustomViewHolder viewHolder, final int position) {
 
-        viewholder.image_list.setImageResource(mList.get(position).getImage_list());
-        viewholder.name_list.setText(mList.get(position).getName_list());
+        viewHolder.image_list.setImageResource(mList.get(position).getImage_list());
+        viewHolder.name_list.setText(mList.get(position).getName_list());
 
         DecimalFormat myFormatter = new DecimalFormat("###,###");
         String formattedStringPrice = myFormatter.format(Integer.parseInt(mList.get(position).getAccount_list()));
 
-        viewholder.account_list.setText(formattedStringPrice);
-        viewholder.search_list.setText(mList.get(position).getSearch_list());
+        viewHolder.account_list.setText(formattedStringPrice);
+        viewHolder.search_list.setText(mList.get(position).getSearch_list());
+        viewHolder.ivFavorite.setImageResource(R.drawable.heart);
     }
 
     @Override

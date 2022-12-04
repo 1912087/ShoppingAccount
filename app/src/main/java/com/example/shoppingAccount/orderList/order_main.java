@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shoppingAccount.DBHelper;
+import com.example.shoppingAccount.dao.DBHelper;
 import com.example.shoppingAccount.R;
 //import com.example.shoppingAccount.RecyclerViewAdapter;
 //import com.example.shoppingAccount.mypageAdapter;

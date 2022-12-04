@@ -13,11 +13,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.shoppingAccount.Fragments.FirstFragment;
 import com.example.shoppingAccount.Popup.PopupActivity;
+import com.example.shoppingAccount.dao.DBHelper;
+import com.example.shoppingAccount.dto.First_Item;
 import com.example.shoppingAccount.orderList.order_planAdapter;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 // implements FirstFragment.onGridSetListener
 public class goods_click extends AppCompatActivity{
@@ -30,6 +34,7 @@ public class goods_click extends AppCompatActivity{
     Bitmap image, newImage;
     DBHelper mydb;
     private order_planAdapter mAdapter;
+    int pid;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -46,18 +51,24 @@ public class goods_click extends AppCompatActivity{
 
 
         Intent secondIntent = getIntent();
-        byte[] byteArray = secondIntent.getByteArrayExtra("goods_image") ;
+        pid = Integer.parseInt(secondIntent.getStringExtra("pid"));
+        First_Item dto = First_Adapter.productDao.productInfo(pid);
+
+        /*byte[] byteArray = secondIntent.getByteArrayExtra("goods_image") ;
         image = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         name_goods = secondIntent.getStringExtra("goods_name");
-        account_goods = secondIntent.getStringExtra("goods_account");
+        account_goods = secondIntent.getStringExtra("goods_account");*/
 
         add_count = Integer.parseInt(goods_amount.getText().toString());
 
-        goods_img.setImageBitmap(image);
-        goods_name.setText(name_goods);
 
+        //goods_img.setImageBitmap(image);
+        goods_img.setImageResource(dto.getImage_list());
+        //goods_name.setText(name_goods);
+        goods_name.setText(dto.getName_list());
 
-        count_goods = Integer.parseInt(account_goods);
+        //count_goods = Integer.parseInt(account_goods);
+        count_goods = Integer.parseInt(dto.getAccount_list());
         add_minus(add_count, count_goods);
 
         back_btn.setOnClickListener(new View.OnClickListener(){
@@ -92,7 +103,7 @@ public class goods_click extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(goods_click.this, PopupActivity.class);
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 Bitmap bitmap = ((BitmapDrawable)goods_img.getDrawable()).getBitmap();
                 Bitmap resize = Bitmap.createScaledBitmap(bitmap, 470, 470, true);
                 resize.compress(Bitmap.CompressFormat.PNG, 100, stream);
@@ -100,10 +111,10 @@ public class goods_click extends AppCompatActivity{
 
                 intent.putExtra("goods_image_pop", byteArray);
                 intent.putExtra("goods_name_pop", goods_name.getText().toString());
-                intent.putExtra("goods_account_pop", total_account.toString());
+                intent.putExtra("goods_account_pop", total_account.toString());*/
                 intent.putExtra("goods_amount_pop", add_count.toString());
+                intent.putExtra("pid", pid);
                 startActivityForResult(intent, 1);
-
             }
         });
     }

@@ -18,17 +18,18 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             tools:srcCompat="@drawable/notice" />
-            <TextView
-                android:id="@+id/mypage_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/notice"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="8"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                android:textColor="#011627"
-                android:text="공지사항" />
+
+        <TextView
+            android:id="@+id/mypage_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/notice"
+            android:layout_weight="8"
+            android:text="공지사항"
+            android:textColor="#011627"
+            android:textSize="30dp"
+            android:textStyle="bold" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

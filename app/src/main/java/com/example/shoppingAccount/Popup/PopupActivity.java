@@ -2,6 +2,7 @@ package com.example.shoppingAccount.Popup;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -17,7 +18,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.shoppingAccount.First_Adapter;
 import com.example.shoppingAccount.R;
+import com.example.shoppingAccount.dao.DBHelper;
+import com.example.shoppingAccount.dto.First_Item;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
@@ -33,6 +37,9 @@ public class PopupActivity extends Activity {
     long mNow;
     Date mDate;
     SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
+    int account;
+
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,19 +57,23 @@ public class PopupActivity extends Activity {
         //데이터 가져오기
         Intent popIntent = getIntent();
 
-        name_goods_pop = popIntent.getStringExtra("goods_name_pop");
+        /*name_goods_pop = popIntent.getStringExtra("goods_name_pop");
         amount_goods_pop = popIntent.getStringExtra("goods_amount_pop");
         account_goods_pop = popIntent.getStringExtra("goods_account_pop");
         byte[] byteArray = popIntent.getByteArrayExtra("goods_image_pop") ;
-        img_goods_pop = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        img_goods_pop = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);*/
+
+        amount_goods_pop = popIntent.getStringExtra("goods_amount_pop");
+        int pid = popIntent.getIntExtra("pid", 0);
+        First_Item dto = First_Adapter.productDao.productInfo(pid);
+        account = Integer.parseInt(amount_goods_pop) * Integer.parseInt(dto.getAccount_list());
 
 
+                DecimalFormat myFormatter = new DecimalFormat("###,###");
+        String formattedStringPrice = myFormatter.format(account);
 
-        DecimalFormat myFormatter = new DecimalFormat("###,###");
-        String formattedStringPrice = myFormatter.format(Integer.parseInt(account_goods_pop));
-
-        or_image.setImageBitmap(img_goods_pop);
-        or_name.setText(name_goods_pop);
+        or_image.setImageResource(dto.getImage_list());
+        or_name.setText(dto.getName_list());
         or_amount.setText(amount_goods_pop);
         or_account.setText(formattedStringPrice);
 
@@ -72,6 +83,7 @@ public class PopupActivity extends Activity {
         button_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dbHelper = new DBHelper(PopupActivity.this);
                 //데이터 전달하고 액티비티 닫기
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 Bitmap bitmap = ((BitmapDrawable)or_image.getDrawable()).getBitmap();
@@ -81,7 +93,6 @@ public class PopupActivity extends Activity {
 
                 String name = or_name.getText().toString();
                 String amount = or_amount.getText().toString();
-                String account = account_goods_pop;
                 //String account = account_goods_pop;
                 String date = getTime();
 
@@ -89,7 +100,7 @@ public class PopupActivity extends Activity {
                 intent.putExtra("image", byteArray);
                 intent.putExtra("name", name);
                 intent.putExtra("amount", amount);
-                intent.putExtra("account", account);
+                intent.putExtra("account", String.valueOf(account));
                 intent.putExtra("date", date);
                 setResult(RESULT_OK, intent);
                 //Intent intent = new Intent();

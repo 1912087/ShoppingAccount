@@ -29,7 +29,7 @@
                     android:visibility="gone"/>
 
                 <ImageView
-                    android:id="@+id/shopping_image"
+                    android:id="@+id/fvImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -44,31 +44,31 @@
                     android:src="@drawable/logo" />
 
                 <ImageView
-                    android:id="@+id/shopping_favorite"
+                    android:id="@+id/fvFavorite"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_below="@id/shopping_image"
-                    android:layout_alignLeft="@id/shopping_image"
-                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/fvImage"
+                    android:layout_alignLeft="@id/fvImage"
                     android:layout_marginLeft="-1dp"
-                    android:src="@drawable/heart" />
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/heart_border" />
 
                 <TextView
-                    android:id="@+id/shopping_search"
+                    android:id="@+id/fvCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/shopping_image"
-                    android:layout_alignLeft="@id/shopping_image"
+                    android:layout_below="@id/fvImage"
+                    android:layout_alignLeft="@id/fvImage"
                     android:text="검색"
                     android:textColor="#00000000"
                     android:visibility="gone"/>
 
                 <TextView
-                    android:id="@+id/shopping_name"
+                    android:id="@+id/fvName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/shopping_image"
-                    android:layout_alignRight="@id/shopping_image"
+                    android:layout_below="@id/fvImage"
+                    android:layout_alignRight="@id/fvImage"
                     android:textColor="#000000"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
@@ -76,11 +76,11 @@
                     android:textSize="50px" />
 
                 <TextView
-                    android:id="@+id/shopping_account"
+                    android:id="@+id/fvAccount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_below="@id/shopping_name"
+                    android:layout_below="@id/fvName"
                     android:textColor="#000000"
                     android:layout_toLeftOf="@id/own"
                     android:text="가격"
@@ -92,8 +92,8 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginBottom="10dp"
                     android:textColor="#000000"
-                    android:layout_below="@id/shopping_name"
-                    android:layout_alignRight="@id/shopping_image"
+                    android:layout_below="@id/fvName"
+                    android:layout_alignRight="@id/fvImage"
                     android:text="원"
                     android:textSize="35px" />
 

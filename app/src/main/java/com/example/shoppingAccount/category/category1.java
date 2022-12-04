@@ -16,8 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.shoppingAccount.First_Adapter;
-import com.example.shoppingAccount.First_Item;
 import com.example.shoppingAccount.R;
 
 import java.util.ArrayList;
@@ -29,7 +27,7 @@ public class category1 extends Fragment {
     category_Item item;
     public static category1_Adapter mAdapter;
     public static RecyclerView recyclerView;
-    private Integer[] logo1 = {R.drawable.clothes_mantoman1, R.drawable.clothes_mantoman2, R.drawable.clothes_mantoman3,
+    private Integer[] logo1 = {R.drawable.clothes_mantoman1, R.drawable.clothes_mantoman1, R.drawable.clothes_mantoman3,
             R.drawable.clothes_mantoman4, R.drawable.clothes_mantoman5, R.drawable.clothes_mantoman6,
             R.drawable.clothes_outer1, R.drawable.clothes_outer2, R.drawable.clothes_outer3,
             R.drawable.clothes_outer4,R.drawable.clothes_outer5,R.drawable.clothes_outer6,

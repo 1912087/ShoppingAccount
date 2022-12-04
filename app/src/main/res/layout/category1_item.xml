@@ -21,15 +21,29 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/category1_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_margin="10dp"
-                    android:scaleType="fitCenter"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/logo"/>
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/logo" />
+
+                <ImageView
+                    android:id="@+id/category1_ivFavorite"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/category1_image"
+                    android:layout_alignLeft="@id/category1_image"
+                    android:src="@drawable/heart" />
 
                 <TextView
                     android:id="@+id/category1_search"
@@ -38,7 +52,8 @@
                     android:layout_below="@id/category1_image"
                     android:layout_alignLeft="@id/category1_image"
                     android:textColor="#00000000"
-                    android:text="검색" />
+                    android:text="검색"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/category1_name"
@@ -46,11 +61,11 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/category1_image"
                     android:layout_alignRight="@id/category1_image"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
                     android:layout_marginBottom="10dp"
                     android:text="상품명"
-                    android:textSize="50px" />
+                    android:textColor="#000000"
+                    android:textSize="50px"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/category1_account"

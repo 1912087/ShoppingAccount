@@ -2,10 +2,19 @@ package com.example.shoppingAccount.orderList;
 
 public class Item{
 
+    int id;
     byte[] image;
     public String name;
     String amount;
     String account;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setImage(byte[] image) {
         this.image = image;
@@ -39,6 +48,7 @@ public class Item{
         return account;
     }
 
+    public Item(){}
     public Item(byte[] image, String name, String amount, String account) {
         this.image = image;
         this.name = name;

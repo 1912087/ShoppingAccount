@@ -1,4 +1,4 @@
-package com.example.shoppingAccount;
+package com.example.shoppingAccount.dao;
 
 import android.accounts.Account;
 import android.content.ContentValues;
@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import com.example.shoppingAccount.Account_Item;
 import com.example.shoppingAccount.orderList.Item;
 import com.example.shoppingAccount.orderList.order_main;
 import com.example.shoppingAccount.orderList.order_planAdapter;
@@ -39,14 +40,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+
         this.context = context;
     }
 
-    //    최초 DB가 존재하지 않으면 새로 생성한다.
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        //변수랑 섞어 놔서 복잡하니 공백을 잘 체크하자. 이것 때문에 에러나서 많은 시간을 허비했다.
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("CREATE TABLE " +LIST_TABLE_NAME + "(");
         stringBuffer.append(LIST_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, ");
@@ -118,13 +118,9 @@ public class DBHelper extends SQLiteOpenHelper {
     //테이블 삭제
     public Integer deleteData(String id){
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(LIST_TABLE_NAME, "ACCOUNT = ?" , new String[] {id});
+        return db.delete(LIST_TABLE_NAME, "ID = ?" , new String[] {id});
     }
 
-    /*
-        DB에서 데이터를 모두 가져와서 ResyclerView 어답터에서 사용할 Items 배열에
-        순더대로 추가하는 함수. 여기저기에서 불러서 사용해야 할경우를 대비 여기에 넣어 둠
-     */
     public void updateItems() {
         order_main.items.clear();
         Cursor cursor = getAllData();
@@ -144,28 +140,30 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         cursor.close();
     }
-    public ArrayList getAllGoods() {
+    public ArrayList<Item> getAllGoods() {
 
         ArrayList<Item> array_list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("select * from goods_list", null);
         res.moveToLast();
         while (res.isBeforeFirst() == false) {
-
-            byte[] image = res.getBlob(res.getColumnIndex("image"));
-            String name = res.getString(res.getColumnIndex("name"));
-            String amount = res.getString(res.getColumnIndex("amount"));
-            String account = res.getString(res.getColumnIndex("account"));
+            Item item = new Item();
+            item.setId(res.getInt(res.getColumnIndex("id")));
+            item.setImage(res.getBlob(res.getColumnIndex("image")));
+            item.setName(res.getString(res.getColumnIndex("name")));
+            item.setAmount(res.getString(res.getColumnIndex("amount")));
+            item.setAccount(res.getString(res.getColumnIndex("account")));
 
             //DecimalFormat myFormatter = new DecimalFormat("###,###");
             //String formattedStringPrice = myFormatter.format(Integer.parseInt(account));
 
-            Item item = new Item(image, name, amount, account);
+            //Item item = new Item(id, image, name, amount, account);
             array_list.add(item);
             res.moveToPrevious();
         }
         return array_list;
     }
+
     public ArrayList getAccount() {
 
         ArrayList<Account_Item> array_list = new ArrayList<>();

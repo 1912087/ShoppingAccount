@@ -1,8 +1,10 @@
 package com.example.shoppingAccount.orderList;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shoppingAccount.DBHelper;
+import com.example.shoppingAccount.dao.DBHelper;
 import com.example.shoppingAccount.R;
 
 import java.text.DecimalFormat;
@@ -68,20 +70,16 @@ public class order_planAdapter extends RecyclerView.Adapter<order_planAdapter.Cu
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomViewHolder viewholder, final int position) {
+    public void onBindViewHolder(@NonNull CustomViewHolder viewholder, @SuppressLint("RecyclerView") final int position) {
 
         viewholder.return_btnn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Toast.makeText(v.getContext(), "반품 신청이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                /*
-                삭제하고 itmes 갱신하고 어답터를 갱신한다. 여기서 이렇게
-                순차적으로 다해줘야 하나? 더 효율적인 방법은?
-                 */
                 DBHelper mydb;
                 mydb = new DBHelper(mContext);
-                mydb.deleteData(mList.get(position).getAccount());
+                mydb.deleteData(String.valueOf(mList.get(position).getId()));
                 mydb.getAllGoods();
                 mList.remove(position);
                 notifyItemRemoved(position);
